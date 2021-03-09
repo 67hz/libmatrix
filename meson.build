@@ -7,11 +7,15 @@ project('libmatrix', 'cpp',
 incdir = 'include'
 data = 'test/data'
 
-libmatrix_dep = library('matrix',
+libmatrix = library('matrix',
   'Mat.h',
   include_directories: incdir,
+  install : true,
   version : '0.0.1',
   soversion : '0')
+
+libmatrix_dep = declare_dependency(include_directories : incdir,
+  link_with : libmatrix)
 
 
 # add check2 as proper test dependency
@@ -20,7 +24,7 @@ libmatrix_dep = library('matrix',
 mattest = executable('matrixtest',
   'test/Matrix_test.cpp',
   include_directories: [incdir],
-  link_with : libmatrix_dep)
+  link_with : libmatrix)
 # dependencies : catch2_dep)
   #install : true)
 
