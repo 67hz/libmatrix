@@ -1,0 +1,5 @@
+builddir
+
+cscope.out
+.clangd
+compile_commands.json
