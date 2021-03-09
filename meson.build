@@ -5,7 +5,6 @@ project('libmatrix', 'cpp',
     'cpp_std=c++17'])
 
 incdir = 'include'
-data = 'test/data'
 
 libmatrix = library('matrix',
   'Mat.h',
@@ -26,7 +25,7 @@ testdatadir = meson.current_source_dir() + '/test/'
 mattest = executable('matrixtest',
   'test/Matrix_test.cpp',
   include_directories: [incdir],
-  link_with : libmatrix)
+  dependencies : libmatrix_dep)
 # dependencies : catch2_dep)
   #install : true)
 
