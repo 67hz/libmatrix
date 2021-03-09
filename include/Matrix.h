@@ -14,7 +14,6 @@ template <typename T> class Matrix;
 
 // \todo: copyable, assignable, swappable, dtor
 template <typename T> class MatrixColumnIterator {
-  T *p {};
   Matrix<T> &mat;
   std::pair<int, int> pos; // x,y coords of matrix
 
@@ -62,13 +61,13 @@ public:
   using iterator = typename vector<T>::iterator;
   using const_iterator = typename vector<T>::const_iterator;
 
-  Matrix(const vector<string> &XCoord)
-      : rows{XCoord.size()}, cols{XCoord.size()}, coll(rows) {
+  Matrix(const vector<string> &vecVec)
+      : rows{vecVec.size()}, cols{vecVec.size()}, coll(rows) {
     {
       size_t i, j;
       const char *c;
-      for (i = 0; i < XCoord.size(); ++i) {
-        for (j = 0, c = XCoord[i].c_str(); *c != '\0'; ++c, ++j) {
+      for (i = 0; i < vecVec.size(); ++i) {
+        for (j = 0, c = vecVec[i].c_str(); *c != '\0'; ++c, ++j) {
           coll[i].emplace_back(*c);
         }
       }

@@ -21,6 +21,8 @@ libmatrix_dep = declare_dependency(include_directories : incdir,
 # add check2 as proper test dependency
 #catch2_dep = dependency('Catch2')
 
+testdatadir = meson.current_source_dir() + '/test/'
+
 mattest = executable('matrixtest',
   'test/Matrix_test.cpp',
   include_directories: [incdir],
@@ -28,6 +30,5 @@ mattest = executable('matrixtest',
 # dependencies : catch2_dep)
   #install : true)
 
-testdatadir = meson.current_source_dir() + '/test/'
 
 test('basic', mattest, workdir: testdatadir)
